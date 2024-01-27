@@ -14,6 +14,7 @@ def test_mult():
         "numpy emplemented": np.matmul,
         "strassen numpy": strassen_mul
     }
+    without_numpy_methods = ["native", "one stroke"]
 
     with open("compare_result.csv", 'w') as csv_file:
         csv_writer = csv.writer(csv_file)
@@ -28,7 +29,7 @@ def test_mult():
             b_np = np.random.randint(100, size=(N, N))
 
             for method_name, mult_method in methods.items():
-                if method_name in ["native", "one stroke"]:
+                if method_name in without_numpy_methods:
                     A = a_np.tolist()
                     B = b_np.tolist()
                 else:
